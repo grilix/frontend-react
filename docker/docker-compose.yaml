@@ -1,0 +1,19 @@
+---
+version: '3'
+
+services:
+  frontend:
+    image: node:16
+    working_dir: /usr/src/frontend
+    command: yarn dev --port 3000 --no-live-reload --color
+    environment:
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/node_modules/.bin
+    ports:
+      - "8082:3000"
+    volumes:
+      - ..:/usr/src/frontend
+      - ./yarnrc:/root/.yarnrc
+      - node_modules:/node_modules
+
+volumes:
+  node_modules: {}
